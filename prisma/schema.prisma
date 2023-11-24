@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model obat {
+  ID_Obat  String @id @db.VarChar(50)
+  NamaObat String @db.VarChar(50)
+  stok     Int
+}
+
+model obatkeluar {
+  Id_ObatKeluar String   @id @db.VarChar(10)
+  ID_Obat       String   @db.VarChar(10)
+  TanggalKeluar DateTime @db.Date
+  Jumlah        Int
+}
+
+model obatmasuk {
+  Id_ObatMasuk String @id @db.VarChar(20)
+  ID_Obat      String @db.VarChar(20)
+  Jumlah       Int
+}
